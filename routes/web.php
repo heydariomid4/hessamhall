@@ -1,5 +1,6 @@
 <?php
 
+//use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+
+    //$response = Http::withHeaders([
+    //    'Authorization' => 'Apikey b59ac448-2a42-4a0e-a293-54f0901b83c4'
+    //])->get('https://napi.arvancloud.com/cdn/4.0/domains')['data'];
+    //return $response;
 });
 
 Auth::routes();
