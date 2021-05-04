@@ -23,6 +23,13 @@ Route::get('/', function () {
     //return $response;
 });
 
+Route::middleware('auth','auth.admin')->prefix('admin')->group(function (){
+    Route::get('/', function () {
+        return "hi";
+    });
+
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
