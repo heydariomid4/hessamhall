@@ -24,12 +24,10 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth','auth.admin')->prefix('admin')->group(function (){
-    Route::get('/', function () {
-        return "hi";
-    });
+    Route::get('/', [App\Http\Controllers\admin\DashboardController::class, 'index'])->name('admin');
 
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
