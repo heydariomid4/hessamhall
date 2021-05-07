@@ -3,7 +3,7 @@
         <!-- User -->
         <div class="user-box">
             <div class="user-img">
-                <img src="assets/images/users/avatar-1.jpg" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
+                <img src="{{ auth()->user()->image }}" alt="user-img" title="{{ auth()->user()->name }}" class="img-circle img-thumbnail img-responsive">
                 <div class="user-status online"><i class="zmdi zmdi-dot-circle"></i></div>
             </div>
             <h5><a href="#">{{ auth()->user()->name }}</a> </h5>

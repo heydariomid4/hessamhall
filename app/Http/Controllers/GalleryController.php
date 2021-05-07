@@ -3,7 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gallery;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Transport\SesTransport;
+use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class GalleryController extends Controller
 {
@@ -14,7 +21,8 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        //
+        alert()->success('Title','Lorem Lorem Lorem');
+
     }
 
     /**
@@ -24,7 +32,8 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        //
+        SEOMeta::setTitle('ایجاد گالری');
+        return view('admin.gallery.add');
     }
 
     /**
@@ -35,7 +44,36 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => ['required', 'max:255'],
+            'category' => ['required'],
+            'show' => [],
+            'path' => ['required','image','max:5000','mimes:jpg,jpeg,bmp,png']
+        ]);
+        $file = $request->file('path');
+
+        $destinationPath = '/image/gallery/';
+        $name = str::random(40).'.'.$file->getClientOriginalExtension();
+        $file->move(public_path($destinationPath), $name );
+        $validatedData['path'] = $destinationPath . $name;
+        if ($request->show == "on") {
+            Gallery::create([
+                'title' => $validatedData['title'],
+                'category' => $validatedData['category'],
+                'show' => 1,
+                'path' => $validatedData['path'],
+            ]);
+        } else{
+            Gallery::create([
+                'title' => $validatedData['title'],
+                'category' => $validatedData['category'],
+                'show' => 0,
+                'path' => $validatedData['path'],
+            ]);
+        }
+
+        toast('ذخیره شد','success');
+        return back();
     }
 
     /**

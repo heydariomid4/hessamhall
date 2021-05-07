@@ -4,22 +4,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
-    <meta name="author" content="Coderthemes">
-
-    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="author" content="omidheydari">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('') }}favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('') }}favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('') }}favicon/favicon-16x16.png">
+    <link rel="manifest" href="{{ asset('') }}favicon/site.webmanifest">
 
     {!! SEO::generate(true) !!}
 
     @yield('style')
 
-    <!-- App css -->
-    <link href="assets/css/bootstrap-rtl.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+    <!-- App CSS -->
+    <link href="{{ asset('assets/css/bootstrap-rtl.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/css/core.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/css/components.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/css/pages.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/css/menu.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet" type="text/css"/>
 
     <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,7 +32,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
-    <script src="assets/js/modernizr.min.js"></script>
+    <script src="{{ asset('') }}assets/js/modernizr.min.js"></script>
 </head>
 
 
@@ -42,7 +46,7 @@
 
         <!-- LOGO -->
         <div class="topbar-left">
-            <a href="index.html" class="logo"><span>آقای<span>ادمین</span></span><i class="zmdi zmdi-layers"></i></a>
+            <a href="index.html" class="logo"><span>آرمان گسترناب تبریز</span></a>
         </div>
 
         <!-- Button mobile view to collapse sidebar menu -->
@@ -84,13 +88,35 @@
         </div> <!-- content -->
 
         <footer class="footer">
-            آقای ادمین2016 ©.
+            آرمانگستر ناب تبریز
         </footer>
 
     </div>
 </div>
 <!-- END wrapper -->
 
+<script>
+    var resizefunc = [];
+</script>
+
+<!-- jQuery  -->
+<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap-rtl.min.js') }}"></script>
+<script src="{{ asset('assets/js/detect.js') }}"></script>
+<script src="{{ asset('assets/js/fastclick.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.blockUI.js') }}"></script>
+<script src="{{ asset('assets/js/waves.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.nicescroll.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.scrollTo.min.js') }}"></script>
+
+    @yield('plugin')
+
+<!-- App js -->
+<script src="{{ asset('assets/js/jquery.core.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.app.js') }}"></script>
+
+@include('sweetalert::alert')
 
  @yield('script')
 
