@@ -16,7 +16,10 @@ class CreateGalleriesTable extends Migration
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('category');
+            $table->foreignId('categorie_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->boolean('show')->default('1');
             $table->string('path');
             $table->timestamps();

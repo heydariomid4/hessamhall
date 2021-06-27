@@ -24,7 +24,8 @@
                         </div>
                     @endif
                     <div class="row">
-                        <form action="{{ route('gallery.store') }}" method="post" enctype="multipart/form-data"  class="form-horizontal" role="form">
+                        <form action="{{ route('gallery.store') }}" method="post" enctype="multipart/form-data"
+                              class="form-horizontal" role="form">
                             @method('POST')
                             @csrf
                             <div class="col-lg-6">
@@ -38,18 +39,17 @@
                                     <label class="col-md-2 control-label">بخش</label>
                                     <div class="col-md-10">
                                         <select name="category" class="form-control">
-                                            <option value="restaurant">رستوران</option>
-                                            <option value="hall">تالار</option>
-                                            <option value="riding">اسب سواری</option>
-                                            <option value="teahouse">چایخانه</option>
-                                            <option value="parking">پارکینگ</option>
+                                            @foreach($category as $category)
+                                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-2 control-label" for="example-email">نمایش ؟</label>
                                     <div class="col-md-10">
-                                        <input name="show" type="checkbox" checked data-plugin="switchery" data-color="#00b19d"/>
+                                        <input name="show" type="checkbox" checked data-plugin="switchery"
+                                               data-color="#00b19d"/>
                                     </div>
                                 </div>
                             </div><!-- end col -->

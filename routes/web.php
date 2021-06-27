@@ -23,9 +23,15 @@ Route::get('/', function () {
     //return $response;
 });
 
+
 Route::middleware('auth','auth.admin')->prefix('admin')->group(function (){
-    Route::get('/', [App\Http\Controllers\admin\DashboardController::class, 'index'])->name('admin');
-    Route::resource('gallery',\App\Http\Controllers\GalleryController::class);
+    Route::get('/', [App\Http\Controllers\admin\DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::resource('gallery',\App\Http\Controllers\GalleryController::class)->except([
+        'show'
+    ]);
+    Route::resource('category',\App\Http\Controllers\CategoryController::class)->only([
+        'index', 'store', 'edit', 'update', 'destroy'
+    ]);
 });
 
 Auth::routes();

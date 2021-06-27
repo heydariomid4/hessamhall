@@ -61,7 +61,7 @@
                         </button>
                     </li>
                     <li>
-                        <h4 class="page-title">داشبورد</h4>
+                        <h4 class="page-title">{{SEOMeta::getTitleSession()}}</h4>
                     </li>
                 </ul>
 

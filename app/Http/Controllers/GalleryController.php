@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Gallery;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Http\Request;
@@ -21,8 +22,10 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        alert()->success('Title','Lorem Lorem Lorem');
-
+        SEOMeta::setTitle('لیست گالری');
+        $gallery = Gallery::paginate(20);
+        $category = Category::all();
+        return view('admin.gallery.gallery', compact('gallery','category'));
     }
 
     /**
@@ -33,7 +36,8 @@ class GalleryController extends Controller
     public function create()
     {
         SEOMeta::setTitle('ایجاد گالری');
-        return view('admin.gallery.add');
+        $category = Category::all();
+        return view('admin.gallery.add', compact('category'));
     }
 
     /**
@@ -48,7 +52,7 @@ class GalleryController extends Controller
             'title' => ['required', 'max:255'],
             'category' => ['required'],
             'show' => [],
-            'path' => ['required','image','max:5000','mimes:jpg,jpeg,bmp,png']
+            'path' => ['required','image','max:2000','mimes:jpg,jpeg,bmp,png']
         ]);
         $file = $request->file('path');
 
@@ -59,14 +63,14 @@ class GalleryController extends Controller
         if ($request->show == "on") {
             Gallery::create([
                 'title' => $validatedData['title'],
-                'category' => $validatedData['category'],
+                'categorie_id' => $validatedData['category'],
                 'show' => 1,
                 'path' => $validatedData['path'],
             ]);
         } else{
             Gallery::create([
                 'title' => $validatedData['title'],
-                'category' => $validatedData['category'],
+                'categorie_id' => $validatedData['category'],
                 'show' => 0,
                 'path' => $validatedData['path'],
             ]);
