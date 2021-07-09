@@ -1,7 +1,9 @@
 <?php
 
 //use Illuminate\Support\Facades\Http;
+
 use Illuminate\Support\Facades\Route;
+//use Spatie\Analytics\Period;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    //$d = Analytics::fetchMostVisitedPages(Period::days(7));
+    //print_r($d); die();
     return view('welcome');
 
     //$response = Http::withHeaders([

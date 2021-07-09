@@ -14,7 +14,8 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
-        "realrashid/sweet-alert": "^3.2"
+        "realrashid/sweet-alert": "^3.2",
+        "spatie/laravel-analytics": "^4.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
